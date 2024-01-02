@@ -3,7 +3,14 @@ provider "azurerm" {
     
   }
 }
-
+terraform {
+  backend "azurerm" {
+    resource_group_name = "RG-STG"
+    storage_account_name = "chtudemostorageus2001"
+    container_name = "demo-1"
+    key = "terraform.tfstate"
+  }
+}
 resource "azurerm_resource_group" "RG" {
   name = var.azurerm_resource_group
   location = var.location
